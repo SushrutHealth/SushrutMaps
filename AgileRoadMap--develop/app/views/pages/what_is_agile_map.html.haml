@@ -1,0 +1,27 @@
+= render 'layouts/top'
+= render 'layouts/header'
+
+.container
+  .headline
+    %h2
+      = it("what_is_agile_map.title")
+  %p
+    = it("what_is_agile_map.paragraph.one", tuneup_link:'http://www.tuneupprocess.com/')
+    
+  %ol
+    %li
+      = it("what_is_agile_map.li.one")
+    %li
+      = it("what_is_agile_map.li.two")
+    %li
+      = it("what_is_agile_map.li.three")
+    %li
+      = it("what_is_agile_map.li.four")
+  %p
+    = it("what_is_agile_map.paragraph.two")
+  .row
+    .col-sm-8.col-sm-offset-2
+      = image_tag 'modelo-agile-map.png', class: 'img-responsive'
+  %br
+  %p
+    = it("what_is_agile_map.paragraph.three")

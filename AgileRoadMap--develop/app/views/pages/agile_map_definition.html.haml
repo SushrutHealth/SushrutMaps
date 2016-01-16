@@ -1,0 +1,14 @@
+= render 'layouts/top'
+= render 'layouts/header'
+
+.container{ style: 'min-height: 500px' }
+  .headline
+    %h2
+      = t("agile_map_definition.title")
+
+  %p
+    = it("agile_map_definition.paragraph.one")
+  %p
+    = it "agile_map_definition.paragraph.two", link:'http://agilismoatwork.blogspot.com.es/2013/02/carta-de-practicas-agiles-arma-tu.html'
+  %p
+    = it("agile_map_definition.paragraph.three", link:'http://agilismoatwork.blogspot.com.es/2011/10/revolucion-o-evolucion-hacia-el.html')

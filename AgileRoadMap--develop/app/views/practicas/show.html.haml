@@ -1,0 +1,13 @@
+= render 'layouts/top'
+= render 'layouts/header'
+
+.container
+  .headline
+    %h2 
+      = it 'modal.name'
+  = @practica.name
+  .headline
+    %h2 
+      = it 'modal.description'
+  = @practica.description.html_safe
+
