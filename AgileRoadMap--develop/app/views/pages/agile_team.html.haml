@@ -1,0 +1,52 @@
+= render 'layouts/top'
+= render 'layouts/header'
+
+.container
+  .headline
+    %h2
+      = it "agile_team.title"
+  %p
+    = it "agile_team.intro"
+  .row.team
+    .col-sm-3
+      .thumbnail-style{ style: 'padding: 30px'}
+        = image_tag("equipo/patricio.jpg", class: 'img-responsive')
+        %h3
+          %a
+            Patricio Letelier
+          %small
+            = it "agile_team.patricio"
+        %p
+          %a{ href:"mailto:letelier@dsic.upv.es"}
+            Email
+        %ul.list-unstyled.list-inline.team-socail
+          %li
+            %a{ href: 'http://agilismoatwork.blogspot.com.es/'}
+              %i.icon-bold
+          %li
+            %a{ href: 'https://twitter.com/yopolt'}
+              %i.icon-twitter
+          %li
+            %a{ href: 'http://www.linkedin.com/in/letelier'}
+              %i.icon-linkedin
+          %li
+            %a{ href: 'http://www.tuneupprocess.com/'}
+              %i.icon-link
+
+    .col-sm-3
+      .thumbnail-style{ style: 'padding: 30px'}
+        = image_tag("equipo/mario.jpg", class: 'img-responsive')
+        %h3
+          %a
+            Mario Pérez
+          %small
+            = it "agile_team.mario" 
+        -#%p
+        -#  Candidato a Máster en Ingeniería de Software.
+        %ul.list-unstyled.list-inline.team-socail
+          %li
+            %a{ href: 'http://www.linkedin.com/pub/mario-p%C3%A9rez-alarc%C3%B3n/73/292/b02'}
+              %i.icon-linkedin
+          %li
+            %a{ href: 'https://github.com/mapreal19' }
+              %i.icon-github-alt

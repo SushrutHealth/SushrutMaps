@@ -1,0 +1,36 @@
+= render 'layouts/top'
+= render 'layouts/header'
+= render 'slider'
+.container
+  .headline{ style: 'margin-top: 30px'}
+    %h2 Agile Roadmap+
+  .row
+    .col-sm-12
+      = it "home.intro", link_video: 'https://www.youtube.com/v/VaCHhjqVKTs'
+
+    / Service Blocks
+  .row{ style: 'margin-top: 40px'}
+    .col-md-4
+      .service
+        %i.icon-resize-small.service-icon
+        .desc
+          %h4 
+            = it "home.services.title.one"
+          %p 
+            = it "home.services.content.one"
+    .col-md-4
+      .service
+        %i.icon-cogs.service-icon
+        .desc
+          %h4 
+            = it "home.services.title.two"
+          %p 
+            = it "home.services.content.two"
+    .col-md-4
+      .service
+        %i.icon-plane.service-icon
+        .desc
+          %h4 
+            = it "home.services.title.three"
+          %p 
+            = it "home.services.content.three"

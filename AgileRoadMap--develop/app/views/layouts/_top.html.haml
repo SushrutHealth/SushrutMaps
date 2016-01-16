@@ -1,0 +1,34 @@
+/ === Top ===
+=# I18n.locale
+=#link_to_unless I18n.locale == :en, "English", locale: :en 
+.top
+  .container
+    %ul.loginbar.pull-right
+      -#%li
+      -#  %i.icon-globe
+      -#  %a= t('languages')
+      -#  %ul.lenguages
+      -#    = lang_link t('english'), :en
+      -#    = lang_link t('spanish'), :es
+      %li
+      - if signed_in?
+        %li
+          = link_to it('top.signout'), signout_path, method: "delete"
+      - else
+        %li
+          = link_to it('top.signup'), signup_path, {'data-push' => true}
+        %li.devider
+        %li
+          = link_to it('top.signin'), signin_path, {'data-push' => true}
+    %ul.switch-language  
+      - if I18n.locale == I18n.default_locale 
+        %li.active Español
+        %li.devider
+        %li 
+          = link_to "English", :locale=> 'en'
+      - else 
+        %li 
+          = link_to "Español", :locale=>'es'
+        %li.devider
+        %li.active English
+

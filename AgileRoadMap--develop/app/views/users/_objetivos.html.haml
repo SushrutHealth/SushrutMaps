@@ -1,0 +1,60 @@
+.headline 
+  %h2 
+    = it "my_agile.objectives.title"
+  %a#toggle_objetivos{href: '#', style: "text-decoration:none"}
+    %i.icon-eye-open.icon-large.tooltip-info{"style" => "text-decoration:none", "data-toggle" => "tooltip", "data-placement" => "right", "title" => it("my_agile.objectives.tooltip-open")}
+    %i.icon-eye-close.icon-large.tooltip-info{"data-toggle" => "tooltip", "data-placement" => "right", "title" => it("my_agile.objectives.tooltip-close"), style: "display:none"}
+
+#checkbox_objetivo.row{ style: "display:none" } 
+  .panel-body.hidden-xs
+    .col-xs-12 
+      .checkbox
+        %label
+          = check_box_tag 'no_interesa'
+          = it "my_agile.objectives.hide-checkbox" 
+
+.col-xs-12
+  %table#tabla_objetivos.table.table-bordered{ :data => { update_url: user_objetivos_sort_path, interesa_url: user_objetivos_interesa_path, update_rest: user_objetivos_update_path }, 
+  style: "display:none"}
+    %thead
+      %tr
+        %th.col-sm-1.col-xs-2
+        %th.col-sm-5.col-xs-10 
+          = it "my_agile.objectives.table.one"
+        %th.col-sm-1.hidden-xs 
+          = it "my_agile.objectives.table.two"
+        %th.col-sm-1.hidden-xs 
+          = it "my_agile.objectives.table.three"
+        %th.col-sm-1.hidden-xs 
+          = it "my_agile.objectives.table.four"
+        %th.col-sm-2.hidden-xs 
+          = it "my_agile.objectives.table.five"
+        %th.col-sm-1.hidden-xs 
+          = it "my_agile.objectives.table.six"
+    %tbody
+      - @objetivos.each do |objetivo|
+        %tr.objetivo.item-objetivo{data: {ids: "#{objetivo.objetivo.get_json_practicas_ids}", item_id: "#{objetivo.id}"}, class: "#{' no-interesa' if objetivo.no_interesa}"}
+          %td.handle{"style" => "cursor:move"}
+            %i.icon-move
+          %td.text_left
+            %span.badge
+              = "#{objetivo.objetivo.id_with_prefix}"
+            = if I18n.locale == :es then objetivo.objetivo.name_es else objetivo.objetivo.name_en end
+            %a.ver-practica.tooltip-info{href: '#', style: "text-decoration:none", "data-toggle" => "tooltip", "data-placement" => "top", "title" => it("my_agile.objectives.tooltip-remark")}
+              %i.icon-eye-open.objetivo-eye-open
+              %i.icon-eye-close.objetivo-eye-close{ style: "display:none"}
+          %td.hidden-xs
+            -if objetivo.objetivo.sat_client
+              %i.icon-ok
+          %td.hidden-xs
+            -if objetivo.objetivo.equipo
+              %i.icon-ok
+          %td.hidden-xs
+            -if objetivo.objetivo.productivity
+              %i.icon-ok
+          %td.hidden-xs= text_area_tag 'objetivo_comment' + objetivo.objetivo.id.to_s, objetivo.comment, class: 'objetivo-comment form-control'
+          %td.hidden-xs
+            = check_box_tag 'no_interesa' + objetivo.objetivo.id.to_s, 
+            objetivo.no_interesa, 
+            objetivo.no_interesa, 
+            class: 'no-interesa-checkbox'
